@@ -1,4 +1,5 @@
 import cmykRgb from 'cmyk-rgb';
+import { Button } from './common';
 import ColorToggle from './ColorToggle';
 
 export default function Mix({ setStep, myColor, setMyColor
@@ -29,18 +30,9 @@ export default function Mix({ setStep, myColor, setMyColor
         <ColorToggle color={black} setMyColor={setMyColor} name="black" />
       </div>
       <div style={{ display: 'flex', alignSelf: 'center'  }}>
-        <button
-          onClick={() => setStep(2)}
-          style={{
-            background: 'transparent',
-            textShadow: '-1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000',
-            fontSize: '2rem',
-            color: '#fff',
-            cursor: 'pointer',
-          }}
-        >
+        <Button onClick={() => setStep(2)}>
           I'm done
-        </button>
+        </Button>
       </div>
     </div>
   );

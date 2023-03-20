@@ -1,4 +1,5 @@
 import cmykRgb from 'cmyk-rgb';
+import { Button } from './common';
 
 export default function Swatch({ todaysColor, setStep }) {
   const { cyan, magenta, yellow, black } = todaysColor;
@@ -16,19 +17,17 @@ export default function Swatch({ todaysColor, setStep }) {
         alignItems: 'center',
       }}
     >
-      <button
+      <Button
         onClick={() => setStep(1)}
         style={{
-          backgroundColor: 'transparent',
           height: '33%',
           width: '33%',
           minWidth: '200px',
-          fontWeight: 'bold',
-          textShadow: '-1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000',
           fontSize: '4rem',
-          color: '#fff',
         }}
-      >Mix it</button>
+      >
+        Mix it
+      </Button>
     </div>
   );
 }

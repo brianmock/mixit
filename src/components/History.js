@@ -1,8 +1,9 @@
 import cmykRgb from 'cmyk-rgb';
 import { getColorByDate } from '../App';
+import { calculateLogScore } from './Score';
 
 export default function History() {
-  const dates = Array.from({length: 10}, (x, i) => {
+  const dates = Array.from({length: 365}, (x, i) => {
     const date = new Date();
     date.setDate(date.getDate() - i);
     return date.toLocaleDateString();
@@ -34,7 +35,7 @@ export default function History() {
           color: '#fff',
           fontSize: '8vh',
         }}>
-        {score}
+        {score && `Easy: ${score} Hard: ${calculateLogScore(score)}`}
       </div>
     );
   });
