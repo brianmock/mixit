@@ -56,8 +56,8 @@ function App() {
     0: <Swatch setStep={setStep} todaysColor={todaysColor} />,
     1: <Mix setMyColor={setMyColor} myColor={myColor} setStep={setStep} />,
     2: <Fade setStep={setStep} myColor={myColor} todaysColor={todaysColor} />,
-    3: <Score myColor={myColor} todaysColor={todaysColor} setStep={setStep} />,
-    4: <History />
+    3: <Score myColor={myColor} todaysColor={todaysColor} setStep={setStep} setMyColor={setMyColor} />,
+    4: <History setStep={setStep} />
   };
 
   return steps[step];

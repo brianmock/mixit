@@ -10,7 +10,7 @@ export function calculateLogScore(score) {
   return Math.round(Math.pow(10, logScore));
 }
 
-export default function Score({ myColor, todaysColor, setStep
+export default function Score({ myColor, todaysColor, setStep, setMyColor
 }) {
   const date = new Date().toLocaleDateString();
   const storedColor = localStorage.getItem(`${date}_color`);
@@ -51,10 +51,22 @@ export default function Score({ myColor, todaysColor, setStep
         Previous scores
       </Button>
       <Button
+        style={{
+          position: 'absolute',
+          bottom: 0,
+          width: '100vw',
+          background: 'white',
+        }}
         onClick={() => {
           localStorage.removeItem(new Date().toLocaleDateString());
           localStorage.removeItem(`${new Date().toLocaleDateString()}_color`);
           setStep(0);
+          setMyColor({
+            cyan: 0,
+            magenta: 0,
+            yellow: 0,
+            black: 0,
+          });
         }}
       >
         reset
