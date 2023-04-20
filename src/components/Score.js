@@ -10,7 +10,7 @@ export function calculateLogScore(score) {
   return Math.round(Math.pow(10, logScore));
 }
 
-export default function Score({ myColor, todaysColor, setStep, setMyColor
+export default function Score({ user, myColor, todaysColor, setStep, setMyColor
 }) {
   const date = new Date().toLocaleDateString();
   const storedColor = localStorage.getItem(`${date}_color`);
@@ -26,6 +26,23 @@ export default function Score({ myColor, todaysColor, setStep, setMyColor
   if (!storedColor) {
     localStorage.setItem(new Date().toLocaleDateString(), score);
     localStorage.setItem(`${new Date().toLocaleDateString()}_color`, `rgba(${myR},${myG},${myB},1)`);
+  }
+
+  const saveScore = async () => {
+    try {
+      const docRef = await addDoc(collection(db, "scores"), {
+        score,
+        hardScore: calculateLogScore(score),
+        uid: user.uid,
+        r: myR,
+        g: myG,
+        b: myB,
+        color: `rgba(${myR},${myG},${myB},1)`,
+      });
+      console.log("Document written with ID: ", docRef.id);
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
   }
 
   const gradient = storedColor ? `linear-gradient(to right, ${storedColor} 50%, rgba(${r}, ${g}, ${b}, 1) 50%)` : `linear-gradient(to right, rgba(${myR},${myG},${myB},1) 50%, rgba(${r}, ${g}, ${b}, 1) 50%)`;

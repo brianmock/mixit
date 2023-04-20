@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import rgbCmyk from 'rgb-cmyk';
 
+import Auth from './components/Auth';
 import Swatch from './components/Swatch';
 import Mix from './components/Mix';
 import Fade from './components/Fade';
@@ -45,6 +46,7 @@ export function getColorByDate(date) {
 }
 
 function App() {
+  const [user, setUser] = useState(null);
   const date = new Date(new Date().toLocaleDateString()).valueOf();
   const score = localStorage.getItem(new Date().toLocaleDateString()) !== null;
   const [myColor, setMyColor] = useState({ cyan: 0, magenta: 0, yellow: 0, black: 0 });
@@ -56,11 +58,20 @@ function App() {
     0: <Swatch setStep={setStep} todaysColor={todaysColor} />,
     1: <Mix setMyColor={setMyColor} myColor={myColor} setStep={setStep} />,
     2: <Fade setStep={setStep} myColor={myColor} todaysColor={todaysColor} />,
-    3: <Score myColor={myColor} todaysColor={todaysColor} setStep={setStep} setMyColor={setMyColor} />,
+    3: <Score user={user} myColor={myColor} todaysColor={todaysColor} setStep={setStep} setMyColor={setMyColor} />,
     4: <History setStep={setStep} />
   };
 
-  return steps[step];
+  console.log(user);
+
+  return (
+    <>
+      {user ? (
+        <div>welcome back, {user.email} <img height={16} width={16} src={user.photoURL} /></div>
+      ) : <Auth user={user} setUser={setUser} />}
+      {steps[step]}
+    </>
+  );
 }
 
 export default App;
