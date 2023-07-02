@@ -1,11 +1,14 @@
 import cmykRgb from 'cmyk-rgb';
+import { collection, addDoc } from "firebase/firestore";
+
 import { Button } from './common';
 
 import { db } from '../api/db';
-import { collection, addDoc } from "firebase/firestore";
 
-export default function Swatch({ todaysColor, setStep }) {
-  const { cyan, magenta, yellow, black } = todaysColor;
+import { useTodaysColor } from '../hooks/useColor';
+
+export default function Swatch({ setStep }) {
+  const { cyan, magenta, yellow, black } = useTodaysColor();
 
   const [r, g, b] = cmykRgb([cyan / 100, magenta / 100, yellow / 100, black / 100]);
 

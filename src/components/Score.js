@@ -1,4 +1,5 @@
 import cmykRgb from 'cmyk-rgb';
+import { useTodaysColor } from '../hooks/useColor';
 import { db } from '../api/db';
 import { collection, addDoc } from "firebase/firestore";
 import { Button } from './common';
@@ -12,8 +13,8 @@ export function calculateLogScore(score) {
   return Math.round(Math.pow(10, logScore));
 }
 
-export default function Score({ user, myColor, todaysColor, setStep, setMyColor
-}) {
+export default function Score({ myColor, setStep, setMyColor, user }) {
+  const todaysColor = useTodaysColor();
   const date = new Date().toLocaleDateString();
   const storedColor = localStorage.getItem(`${date}_color`);
   const storedScore = localStorage.getItem(`${date}`);

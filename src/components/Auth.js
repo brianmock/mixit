@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
 import { auth } from '../api/auth';
@@ -47,6 +48,7 @@ export default function Auth({ user, setUser }) {
         setUser(user);
       }).catch((error) => {
         const { code, message } = error;
+        console.log(code, message);
         // The email of the user's account used.
         const email = error.customData.email;
         // The AuthCredential type that was used.
@@ -58,13 +60,12 @@ export default function Auth({ user, setUser }) {
   }
 
 
-  return (
+  return user ? null : (
     <div
       style={{
-        position: 'absolute',
+        position: 'fixed',
         display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
+        justifyContent: 'center',
         width: '100%',
       }}
     >

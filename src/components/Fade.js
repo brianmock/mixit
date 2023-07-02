@@ -1,8 +1,11 @@
 import cmykRgb from 'cmyk-rgb';
 import { useState } from 'react';
 
-export default function Fade({ myColor, todaysColor, setStep
+import { useTodaysColor } from '../hooks/useColor';
+
+export default function Fade({ myColor, setStep
 }) {
+  const todaysColor = useTodaysColor();
   const [fade, setFade] = useState(false)
   const [myR, myG, myB] = cmykRgb([myColor.cyan / 100, myColor.magenta / 100, myColor.yellow / 100, myColor.black / 100]);
 
