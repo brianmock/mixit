@@ -28,6 +28,8 @@ export default function Score({ user, myColor, todaysColor, setStep, setMyColor
   async function saveScore() {
     try {
       const docRef = await addDoc(collection(db, "scores"), {
+        friendlyDate: date,
+        date: new Date(),
         score,
         hardScore: calculateLogScore(score),
         uid: user.uid,
