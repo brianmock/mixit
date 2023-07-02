@@ -1,4 +1,6 @@
 import cmykRgb from 'cmyk-rgb';
+import { db } from '../api/db';
+import { collection, addDoc } from "firebase/firestore";
 import { Button } from './common';
 
 const min = 1;
@@ -23,12 +25,7 @@ export default function Score({ user, myColor, todaysColor, setStep, setMyColor
 
   const score = Math.round((1 - (diff / 765)) * 100);
 
-  if (!storedColor) {
-    localStorage.setItem(new Date().toLocaleDateString(), score);
-    localStorage.setItem(`${new Date().toLocaleDateString()}_color`, `rgba(${myR},${myG},${myB},1)`);
-  }
-
-  const saveScore = async () => {
+  async function saveScore() {
     try {
       const docRef = await addDoc(collection(db, "scores"), {
         score,
@@ -43,6 +40,12 @@ export default function Score({ user, myColor, todaysColor, setStep, setMyColor
     } catch (e) {
       console.error("Error adding document: ", e);
     }
+  }
+
+  if (!storedColor) {
+    localStorage.setItem(new Date().toLocaleDateString(), score);
+    localStorage.setItem(`${new Date().toLocaleDateString()}_color`, `rgba(${myR},${myG},${myB},1)`);
+    saveScore();
   }
 
   const gradient = storedColor ? `linear-gradient(to right, ${storedColor} 50%, rgba(${r}, ${g}, ${b}, 1) 50%)` : `linear-gradient(to right, rgba(${myR},${myG},${myB},1) 50%, rgba(${r}, ${g}, ${b}, 1) 50%)`;

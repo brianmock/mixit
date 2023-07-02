@@ -59,21 +59,19 @@ export default function Auth({ user, setUser }) {
 
 
   return (
-    <>
-      {error}
-      <label htmlFor="email">Email</label>
-      <input id="email" value={email} onChange={e => setEmail(e.target.value)} />
-      <label htmlFor="password">Password</label>
-      <input id="password" value={password} onChange={e => setPassword(e.target.value)} />
-      <Button onClick={handleCreateAccount}>
-        Create account
-      </Button>
-      <Button onClick={handleSignIn}>
-        Sign in
-      </Button>
+    <div
+      style={{
+        position: 'absolute',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        width: '100%',
+      }}
+    >
       <Button onClick={handleGoogleSignIn}>
         Google
       </Button>
-    </>
+      <span sx={{ color: 'red' }}>{error}</span>
+    </div>
   );
 }

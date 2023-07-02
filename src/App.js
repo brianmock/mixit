@@ -7,6 +7,7 @@ import Mix from './components/Mix';
 import Fade from './components/Fade';
 import Score from './components/Score';
 import History from './components/History';
+import User from './components/User';
 
 const PRIMES = [10000000019, 31];
 
@@ -66,9 +67,7 @@ function App() {
 
   return (
     <>
-      {user ? (
-        <div>welcome back, {user.email} <img height={16} width={16} src={user.photoURL} /></div>
-      ) : <Auth user={user} setUser={setUser} />}
+      {user ? <User user={user} /> : <Auth user={user} setUser={setUser} />}
       {steps[step]}
     </>
   );
