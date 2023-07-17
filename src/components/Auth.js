@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { ReactComponent as GoogleLogo } from './common/google.svg';
 
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
@@ -65,12 +66,18 @@ export default function Auth({ user, setUser }) {
       style={{
         position: 'fixed',
         display: 'flex',
-        justifyContent: 'center',
+        flexDirection: 'column',
+        alignItems: 'flex-end',
         width: '100%',
+        marginTop: '0.5rem',
+        gap: '0.5rem',
       }}
     >
-      <Button onClick={handleGoogleSignIn}>
-        Google
+      <Button
+        onClick={handleGoogleSignIn}
+        style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0.5rem', margin: 0, marginRight: '0.5rem' }}
+      >
+        <GoogleLogo />
       </Button>
       <span sx={{ color: 'red' }}>{error}</span>
     </div>

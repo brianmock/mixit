@@ -15,27 +15,37 @@ export function User({ user, setUser, setStep }) {
       position: 'fixed',
       display: 'flex',
       flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
+      alignItems: 'flex-end',
       width: '100%',
       marginTop: '0.5rem',
       gap: '0.5rem',
       }}>
       <Button
         onClick={() => setShowMenu(prevState => !prevState)}
+        style={{ margin: 0, marginRight: '0.5rem' }}
     >
-        welcome {user.email} {image}
+        {image || user.email}
       </Button>
       {showMenu ? (
         <>
-          <Button onClick={() => {
-            setShowMenu(false);
-            setStep(4)
-          }}>History</Button>
-          <Button onClick={() => {
-            setShowMenu(false);
-            setUser(null)
-          }}>Sign out</Button>
+          <Button
+            onClick={() => {
+              setShowMenu(false);
+              setStep(4)
+            }}
+            style={{ margin: 0, marginRight: '0.5rem' }}
+          >
+            History
+          </Button>
+          <Button
+            onClick={() => {
+              setShowMenu(false);
+              setUser(null)
+            }}
+            style={{ margin: 0, marginRight: '0.5rem' }}
+          >
+            Sign out
+          </Button>
         </>
       ): null}
     </div>
