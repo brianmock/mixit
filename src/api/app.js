@@ -1,13 +1,13 @@
 import { initializeApp } from 'firebase/app';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDEW9LcUbSNEfNPYx9elRumM60gv4A5sMw",
+  apiKey: process.env.FIREBASE_API_KEY,
   authDomain: "mix-it-377021.firebaseapp.com",
-  projectId: "mix-it-377021",
+  projectId: process.env.FIREBASE_PROJECT_ID,
   storageBucket: "mix-it-377021.appspot.com",
-  messagingSenderId: "826317232630",
-  appId: "1:826317232630:web:863265467da0a6950c4fd7",
-  measurementId: "G-PCQP1SH50G"
+  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.FIREBASE_APP_ID,
+  measurementId: process.env.FIREBASE_MEASUREMENT_ID
 };
 
 const app = initializeApp(firebaseConfig);
