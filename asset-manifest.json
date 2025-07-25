@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/github.io/mixit/static/css/main.5f0d9c14.css",
-    "main.js": "/github.io/mixit/static/js/main.e29e9926.js",
-    "static/js/453.3f5adc62.chunk.js": "/github.io/mixit/static/js/453.3f5adc62.chunk.js",
-    "static/media/google.svg": "/github.io/mixit/static/media/google.80322e9107ef7a71bcd6e7150650cc4b.svg",
-    "index.html": "/github.io/mixit/index.html",
-    "main.5f0d9c14.css.map": "/github.io/mixit/static/css/main.5f0d9c14.css.map",
-    "main.e29e9926.js.map": "/github.io/mixit/static/js/main.e29e9926.js.map",
-    "453.3f5adc62.chunk.js.map": "/github.io/mixit/static/js/453.3f5adc62.chunk.js.map"
+    "main.css": "/mixit/static/css/main.5f0d9c14.css",
+    "main.js": "/mixit/static/js/main.ff30db3a.js",
+    "static/js/453.3f5adc62.chunk.js": "/mixit/static/js/453.3f5adc62.chunk.js",
+    "static/media/google.svg": "/mixit/static/media/google.80322e9107ef7a71bcd6e7150650cc4b.svg",
+    "index.html": "/mixit/index.html",
+    "main.5f0d9c14.css.map": "/mixit/static/css/main.5f0d9c14.css.map",
+    "main.ff30db3a.js.map": "/mixit/static/js/main.ff30db3a.js.map",
+    "453.3f5adc62.chunk.js.map": "/mixit/static/js/453.3f5adc62.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.5f0d9c14.css",
-    "static/js/main.e29e9926.js"
+    "static/js/main.ff30db3a.js"
   ]
 }
